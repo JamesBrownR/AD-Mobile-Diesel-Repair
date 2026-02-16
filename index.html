@@ -1,1 +1,104 @@
+---
+layout: default
+---
 
+<section class="hero">
+    <div class="container">
+        <img src="logo.png" alt="AD&M Diesel Repair" style="max-width: 300px; margin-bottom: 20px;">
+        <h1>Expert Diesel Repair <br><span style="color: var(--brand-red); -webkit-text-fill-color: var(--brand-red);">Anytime, Anywhere</span></h1>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;">Top-rated mobile diesel mechanic in Central Florida. From fleet maintenance to emergency roadside rescues—Sheldon gets you back on the road for less.</p>
+        <a href="tel:+14074364484" class="cta-button pulse">Get a Quote Now</a>
+    </div>
+</section>
+
+<section class="container" style="padding: 80px 0;">
+    <h2 style="text-align: center; text-transform: uppercase;"><i class="fas fa-star" style="color: var(--brand-red);"></i> Driver Testimonials</h2>
+    <div class="scroll-container" id="review-container">
+        </div>
+</section>
+
+<section style="background: #111; padding: 80px 0;">
+    <div class="container">
+        <h2 style="text-align: center; text-transform: uppercase;">Field Work Gallery</h2>
+        <div class="scroll-container" id="gallery-container">
+            </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 80px 0;">
+    <h2 style="text-align: center; text-transform: uppercase;"><i class="fab fa-instagram"></i> Live From The Road</h2>
+    <div class="scroll-container" id="video-container">
+        </div>
+</section>
+
+<section class="container contact-grid">
+    <div>
+        <h2 style="text-transform: uppercase;">Request Service</h2>
+        <p>Breakdown in Orlando or Leesburg? Fill out the form and Sheldon will contact you immediately.</p>
+        <ul style="list-style: none; padding: 0;">
+            <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Emergency Roadside</li>
+            <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Brake & Clutch Replacement</li>
+            <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Computer Diagnostics</li>
+        </ul>
+    </div>
+    <div>
+        <form action="https://formspree.io/f/your-id-here" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="_replyto" placeholder="Your Email" required>
+            <input type="text" name="truck" placeholder="Truck/Engine Model">
+            <textarea name="message" rows="4" placeholder="Describe the issue..."></textarea>
+            <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // Review Data Array
+    const reviews = [
+        { name: "Mary Long", text: "An honest fair capable mechanic and he is a nice fellow. He actually charged me LESS than the original estimate.", stars: 5 },
+        { name: "Al Sawyer", text: "This man literally saved me thousands of dollars... he came out charged me 260 dollars and solved my problem.", stars: 5 },
+        { name: "Crystal Orr", text: "Sheldon diagnosed the issue with a video and a FaceTime call. Highly recommend!", stars: 5 },
+        { name: "Antoine Cruz", text: "He fixed my problem in no time. The price was beyond reasonable. Highly recommend.", stars: 5 }
+    ];
+
+    // Gallery Data Array
+    const gallery = [
+        "work1.jpg", "work2.jpg", "work3.jpg", "work4.jpg"
+    ];
+
+    // Video Data Array (Replace with actual video file paths or Instagram embeds)
+    const videos = [
+        "video1.mp4", "video2.mp4", "video3.mp4"
+    ];
+
+    // Inject Reviews
+    const revCont = document.getElementById('review-container');
+    reviews.forEach(r => {
+        revCont.innerHTML += `
+            <div class="review-card">
+                <div class="star-rating">${'<i class="fas fa-star"></i>'.repeat(r.stars)}</div>
+                <p>"${r.text}"</p>
+                <strong>- ${r.name}</strong>
+            </div>
+        `;
+    });
+
+    // Inject Gallery
+    const galCont = document.getElementById('gallery-container');
+    gallery.forEach(img => {
+        galCont.innerHTML += `<img src="${img}" class="gallery-img" alt="Diesel Repair Work">`;
+    });
+
+    // Inject Videos
+    const vidCont = document.getElementById('video-container');
+    videos.forEach(v => {
+        vidCont.innerHTML += `
+            <div class="video-card">
+                <video width="100%" height="100%" controls muted>
+                    <source src="${v}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        `;
+    });
+</script>
