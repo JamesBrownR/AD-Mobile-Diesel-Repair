@@ -1,1 +1,8 @@
-
+- type: local
+  src: Pics/ADMDR1.mp4
+- type: local
+  src: Pics/ADMDR2.mp4
+- type: local
+  src: Pics/ADMDR3.mp4
+- type: local
+  src: Pics/ADMDR4.mp4
