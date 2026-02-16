@@ -11,12 +11,12 @@ layout: default
     </div>
 </section>
 
-<!-- ★ DRIVER TESTIMONIALS — rendered server-side via Liquid -->
+<!-- ★ DRIVER TESTIMONIALS -->
 <section class="container" style="padding: 80px 0;">
-    <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">
+    <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 30px;">
         <i class="fas fa-star" style="color: var(--brand-red);"></i> Driver Testimonials
     </h2>
-    <div class="scroll-container" id="review-container">
+    <div class="reviews-grid">
         {% for review in site.data.reviews %}
         <div class="review-card">
             <div class="star-rating">★★★★★</div>
@@ -28,13 +28,13 @@ layout: default
     </div>
 </section>
 
-<!-- 📸 FIELD WORK GALLERY — rendered server-side via Liquid -->
+<!-- 📸 FIELD WORK GALLERY -->
 <section style="background: #111; padding: 80px 0;">
     <div class="container">
-        <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">Field Work Gallery</h2>
-        <div class="scroll-container" id="gallery-container">
+        <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 30px;">Field Work Gallery</h2>
+        <div class="gallery-grid">
             {% for item in site.data.gallery %}
-            <div style="min-width: 280px; flex-shrink: 0;">
+            <div class="gallery-item">
                 <img src="{{ site.baseurl }}/{{ item.image }}" alt="{{ item.caption }}" class="gallery-img">
                 {% if item.caption %}
                 <p style="text-align:center; margin-top: 8px; color: #aaa; font-size: 0.9rem;">{{ item.caption }}</p>
@@ -48,7 +48,7 @@ layout: default
     </div>
 </section>
 
-<!-- 🎬 VIDEO / INSTAGRAM — rendered server-side via Liquid -->
+<!-- 🎬 VIDEO / INSTAGRAM -->
 <section class="container" style="padding: 80px 0;">
     <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">
         <i class="fab fa-instagram"></i> Live From The Road
