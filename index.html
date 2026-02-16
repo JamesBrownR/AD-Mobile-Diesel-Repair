@@ -11,33 +11,78 @@ layout: default
     </div>
 </section>
 
+<!-- ★ DRIVER TESTIMONIALS — rendered server-side via Liquid -->
 <section class="container" style="padding: 80px 0;">
-    <h2 style="text-align: center; text-transform: uppercase;"><i class="fas fa-star" style="color: var(--brand-red);"></i> Driver Testimonials</h2>
+    <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">
+        <i class="fas fa-star" style="color: var(--brand-red);"></i> Driver Testimonials
+    </h2>
     <div class="scroll-container" id="review-container">
+        {% for review in site.data.reviews %}
+        <div class="review-card">
+            <div class="star-rating">★★★★★</div>
+            <p style="font-weight: bold; margin: 0 0 6px;">{{ review.name }}</p>
+            <p style="color: #aaa; font-size: 0.85rem; margin: 0 0 12px;">{{ review.date }}</p>
+            <p style="margin: 0; font-size: 0.95rem;">{{ review.text }}</p>
         </div>
-</section>
-
-<section style="background: #111; padding: 80px 0;">
-    <div class="container">
-        <h2 style="text-align: center; text-transform: uppercase;">Field Work Gallery</h2>
-        <div class="scroll-container" id="gallery-container">
-            </div>
+        {% endfor %}
     </div>
 </section>
 
-<section class="container" style="padding: 80px 0;">
-    <h2 style="text-align: center; text-transform: uppercase;"><i class="fab fa-instagram"></i> Live From The Road</h2>
-    <div class="scroll-container" id="video-container">
+<!-- 📸 FIELD WORK GALLERY — rendered server-side via Liquid -->
+<section style="background: #111; padding: 80px 0;">
+    <div class="container">
+        <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">Field Work Gallery</h2>
+        <div class="scroll-container" id="gallery-container">
+            {% for item in site.data.gallery %}
+            <div style="min-width: 280px; flex-shrink: 0;">
+                <img src="{{ site.baseurl }}/{{ item.image }}" alt="{{ item.caption }}" class="gallery-img">
+                {% if item.caption %}
+                <p style="text-align:center; margin-top: 8px; color: #aaa; font-size: 0.9rem;">{{ item.caption }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% if site.data.gallery == empty or site.data.gallery == nil %}
+            <p style="color:#666; padding: 20px;">Gallery images coming soon.</p>
+            {% endif %}
         </div>
+    </div>
 </section>
 
+<!-- 🎬 VIDEO / INSTAGRAM — rendered server-side via Liquid -->
+<section class="container" style="padding: 80px 0;">
+    <h2 style="text-align: center; text-transform: uppercase; margin-bottom: 10px;">
+        <i class="fab fa-instagram"></i> Live From The Road
+    </h2>
+    <div class="scroll-container" id="video-container">
+        {% for video in site.data.videos %}
+        <div class="video-card">
+            {% if video.type == "instagram" %}
+            <iframe src="https://www.instagram.com/p/{{ video.id }}/embed/" 
+                    width="280" height="500" frameborder="0" scrolling="no"
+                    allowtransparency="true" allow="encrypted-media"></iframe>
+            {% elsif video.type == "youtube" %}
+            <iframe width="280" height="500" 
+                    src="https://www.youtube.com/embed/{{ video.id }}"
+                    frameborder="0" allowfullscreen></iframe>
+            {% else %}
+            <video src="{{ site.baseurl }}/{{ video.src }}" controls style="width:100%;height:100%;object-fit:cover;"></video>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% if site.data.videos == empty or site.data.videos == nil %}
+        <p style="color:#666; padding: 20px;">Videos coming soon.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- 📬 CONTACT FORM -->
 <section class="container contact-grid">
     <div>
         <h2 style="text-transform: uppercase;">Request Service</h2>
         <p>Breakdown in Orlando or Leesburg? Fill out the form and Sheldon will contact you immediately.</p>
         <ul style="list-style: none; padding: 0;">
             <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Emergency Roadside</li>
-            <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Brake & Clutch Replacement</li>
+            <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Brake &amp; Clutch Replacement</li>
             <li><i class="fas fa-check-circle" style="color: var(--brand-red);"></i> Computer Diagnostics</li>
         </ul>
     </div>
@@ -51,5 +96,3 @@ layout: default
         </form>
     </div>
 </section>
-
-
