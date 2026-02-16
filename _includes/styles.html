@@ -38,23 +38,66 @@
     .pulse { animation: pulse-red 2s infinite; }
     @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(211, 49, 33, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(211, 49, 33, 0); } 100% { box-shadow: 0 0 0 0 rgba(211, 49, 33, 0); } }
 
-    /* Review & Gallery Arrays */
-    .scroll-container { display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scrollbar-width: thin; }
-    .review-card { min-width: 300px; background: var(--card-bg); padding: 20px; border-left: 4px solid var(--brand-red); border-radius: 8px; }
+    /* ── Reviews Grid ── */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        padding: 20px 0;
+    }
+
+    .review-card {
+        background: var(--card-bg);
+        padding: 20px;
+        border-left: 4px solid var(--brand-red);
+        border-radius: 8px;
+    }
+
     .star-rating { color: #f1c40f; margin-bottom: 10px; }
 
+    /* ── Gallery Grid ── */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 20px 0;
+    }
+
+    .gallery-item { display: flex; flex-direction: column; }
+
+    .gallery-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #333;
+        display: block;
+    }
+
+    /* ── Video row (keep horizontal scroll for tall video embeds) ── */
+    .scroll-container { display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scrollbar-width: thin; }
     .video-card { min-width: 280px; height: 500px; background: #000; border-radius: 15px; overflow: hidden; position: relative; border: 1px solid #333; }
-    .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 2px solid #333; }
 
     /* Form */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 50px 0; }
     form { background: var(--card-bg); padding: 30px; border-radius: 10px; }
-    input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 4px; }
+    input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 4px; box-sizing: border-box; }
 
     footer { text-align: center; padding: 50px 0; background: #000; border-top: 1px solid #222; }
     
+    @media (max-width: 1024px) {
+        .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+        .gallery-grid  { grid-template-columns: repeat(3, 1fr); }
+    }
+
     @media (max-width: 768px) {
         .hero h1 { font-size: 2.5rem; }
-        .contact-grid { grid-template-columns: 1fr; }
+        .contact-grid  { grid-template-columns: 1fr; }
+        .reviews-grid  { grid-template-columns: 1fr; }
+        .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+        .gallery-grid { grid-template-columns: 1fr; }
     }
 </style>
